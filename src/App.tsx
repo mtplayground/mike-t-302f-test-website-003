@@ -1,6 +1,7 @@
 import { Container } from './components/layout/Container'
 import { PageShell } from './components/layout/PageShell'
 import { Section } from './components/layout/Section'
+import { NavBar } from './components/NavBar'
 import { Button } from './components/ui/Button'
 import { landingContent, sectionIds } from './config/content'
 import { appConfig } from './config/env'
@@ -9,7 +10,7 @@ function App() {
   const { cta, hero, scaffold } = landingContent
 
   return (
-    <PageShell>
+    <PageShell header={<NavBar />}>
       <Section
         id={sectionIds.home}
         className="grid min-h-screen place-items-center"
