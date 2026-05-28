@@ -52,6 +52,11 @@ type LandingContent = {
   brandName: string
   cta: CtaConfig
   faq: readonly FaqItem[]
+  faqSection: {
+    description: string
+    eyebrow: string
+    heading: string
+  }
   featureSection: {
     description: string
     eyebrow: string
@@ -204,6 +209,12 @@ export const landingContent = {
         'Yes. Set VITE_CTA_URL at build time to point each environment at the right destination.',
     },
   ],
+  faqSection: {
+    eyebrow: 'FAQ',
+    heading: 'Common questions before you hand work to an autonomous agent.',
+    description:
+      'A short set of answers about ownership, collaboration, and how ZeroClaw fits into an existing GitHub workflow.',
+  },
   scaffold: {
     foundationEyebrow: 'Shared foundation',
     foundationHeading:
