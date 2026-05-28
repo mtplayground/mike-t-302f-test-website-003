@@ -2,10 +2,11 @@ import type { ReactNode } from 'react'
 
 type PageShellProps = {
   children: ReactNode
+  footer?: ReactNode
   header?: ReactNode
 }
 
-export function PageShell({ children, header }: PageShellProps) {
+export function PageShell({ children, footer, header }: PageShellProps) {
   return (
     <div className="min-h-screen bg-paper text-ink">
       <a
@@ -18,6 +19,7 @@ export function PageShell({ children, header }: PageShellProps) {
       <main id="main-content" tabIndex={-1} className="focus:outline-none">
         {children}
       </main>
+      {footer}
     </div>
   )
 }

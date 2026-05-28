@@ -48,6 +48,19 @@ export type FaqItem = {
   question: string
 }
 
+export type ExternalLink = {
+  ariaLabel: string
+  href: string
+  label: string
+}
+
+export type FooterContent = {
+  anchorLinks: readonly NavItem[]
+  description: string
+  legalText: string
+  socialLinks: readonly ExternalLink[]
+}
+
 type LandingContent = {
   brandName: string
   cta: CtaConfig
@@ -62,6 +75,7 @@ type LandingContent = {
     eyebrow: string
     heading: string
   }
+  footer: FooterContent
   featureSection: {
     description: string
     eyebrow: string
@@ -221,5 +235,30 @@ export const landingContent = {
     heading: 'Common questions before you hand work to an autonomous agent.',
     description:
       'A short set of answers about ownership, collaboration, and how ZeroClaw fits into an existing GitHub workflow.',
+  },
+  footer: {
+    description:
+      'Autonomous software delivery for founder-led products, built around GitHub-native planning, implementation, validation, and release flow.',
+    anchorLinks: [
+      { href: `#${sectionIds.home}`, label: 'Home' },
+      { href: `#${sectionIds.howItWorks}`, label: 'How it works' },
+      { href: `#${sectionIds.features}`, label: 'Features' },
+      { href: `#${sectionIds.whyFounders}`, label: 'Why founders' },
+      { href: `#${sectionIds.faq}`, label: 'FAQ' },
+      { href: `#${sectionIds.finalCta}`, label: 'Start' },
+    ],
+    socialLinks: [
+      {
+        href: 'https://github.com/mtplayground/mike-t-302f-test-website-003',
+        label: 'GitHub',
+        ariaLabel: 'View the ZeroClaw website repository on GitHub',
+      },
+      {
+        href: 'mailto:hello@zeroclaw.dev',
+        label: 'Email',
+        ariaLabel: 'Email ZeroClaw',
+      },
+    ],
+    legalText: 'All rights reserved.',
   },
 } satisfies LandingContent
