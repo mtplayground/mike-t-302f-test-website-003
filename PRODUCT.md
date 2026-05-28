@@ -16,12 +16,14 @@ founder-led products.
   - Why Founders narrative with time, cost, and momentum benefits.
   - Accessible FAQ accordion.
   - Final CTA band.
+  - Footer with section links, contact links, and copyright.
 - Uses smooth in-page anchor navigation.
 - Reads the CTA destination from `VITE_CTA_URL` at build time, falling back to
   `#final-cta`.
 - Supports local development and preview on `0.0.0.0:8080`.
 - Produces a production build with TypeScript type-checking followed by Vite
   bundling.
+- Verifies static production output with `npm run verify:static`.
 
 ## Architecture
 
@@ -41,6 +43,7 @@ founder-led products.
   - `Section`
   - `Button`
   - `NavBar`
+  - `Footer`
 - `src/config/content.ts` holds typed page copy, section ids, nav links, FAQ
   content, and section data.
 - `src/config/env.ts` adapts build-time Vite environment values.
@@ -59,6 +62,8 @@ founder-led products.
   accent colors, signal CTA color, compact radii, and shared spacing.
 - The FAQ uses explicit button controls with `aria-expanded`, `aria-controls`,
   and labelled regions.
+- Production assets use relative paths so `dist/` can be hosted at a domain root
+  or under a subdirectory.
 
 ## Conventions
 
@@ -66,6 +71,8 @@ founder-led products.
   - `npm run dev`
   - `npm run build`
   - `npm run preview`
+  - `npm run verify:static`
+  - `npm run test:e2e`
   - `npm run lint`
   - `npm run format`
   - `npm run format:check`
