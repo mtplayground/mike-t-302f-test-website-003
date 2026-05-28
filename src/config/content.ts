@@ -48,6 +48,12 @@ type LandingContent = {
   faq: readonly FaqItem[]
   features: readonly FeatureItem[]
   hero: HeroContent
+  howItWorks: {
+    description: string
+    eyebrow: string
+    heading: string
+    loopNote: string
+  }
   navItems: readonly NavItem[]
   scaffold: {
     foundationDescription: string
@@ -74,6 +80,14 @@ export const landingContent = {
       'An autonomous delivery agent that works inside your GitHub flow.',
     positioning:
       'Describe the product direction, keep ownership of the repository, and let ZeroClaw plan, implement, validate, and ship focused changes through pull requests.',
+  },
+  howItWorks: {
+    eyebrow: 'How it works',
+    heading: 'A continuous SDLC loop for founder-led products.',
+    description:
+      'ZeroClaw keeps strategy, code, release, and production feedback connected so each change has a clear path from intent to operation.',
+    loopNote:
+      'Operate feeds production signals and priorities back into Plan for the next focused change.',
   },
   navItems: [
     { href: `#${sectionIds.howItWorks}`, label: 'How it works' },
