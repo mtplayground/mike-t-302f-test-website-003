@@ -1,0 +1,29 @@
+Architecture plan
+
+Scope
+- Issue #1 initializes a Vite + React + TypeScript application with development, build, linting, and formatting scripts.
+
+Module structure and file organization
+- `package.json`: npm scripts and frontend dependencies.
+- `index.html`: Vite HTML entry point.
+- `vite.config.ts`: Vite React plugin configuration.
+- `tsconfig.json`, `tsconfig.app.json`, `tsconfig.node.json`: TypeScript project configuration split between browser app code and tooling config.
+- `eslint.config.js` and Prettier configuration: linting and formatting baseline.
+- `src/main.tsx`: React root bootstrap.
+- `src/App.tsx`: initial application shell.
+- `src/index.css` or `src/App.css`: global styles and app-specific styling.
+- `public/`: static assets served directly by Vite.
+
+Shared types
+- No shared domain types are needed for the initial scaffold.
+- Future shared TypeScript types should live under `src/types/` once the app has domain models or API contracts.
+
+Dependencies between issues
+- Issue #1 is the foundation for all future frontend work.
+- Later issues should depend on this scaffold for scripts, TypeScript settings, linting, formatting, and source layout.
+
+Key design decisions
+- Use Vite's React + TypeScript template shape to keep the project conventional and easy to maintain.
+- Keep the initial app minimal, with no routing, state library, API client, or UI framework until a future issue requires it.
+- Prefer npm scripts that cover `dev`, `build`, `preview`, `lint`, and `format` so CI and local workflows are predictable.
+- Keep generated and secret/runtime files out of version control via `.gitignore`.
