@@ -4,6 +4,7 @@ import { Section } from './components/layout/Section'
 import { NavBar } from './components/NavBar'
 import { landingContent } from './config/content'
 import { Hero } from './sections/Hero'
+import { HowItWorks } from './sections/HowItWorks'
 
 function App() {
   const { scaffold } = landingContent
@@ -11,6 +12,7 @@ function App() {
   return (
     <PageShell header={<NavBar />}>
       <Hero />
+      <HowItWorks />
 
       <Section
         id="foundation"
