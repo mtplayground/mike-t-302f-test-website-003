@@ -23,7 +23,8 @@ export type CtaConfig = {
 export type HeroContent = {
   eyebrow: string
   heading: string
-  lead: string
+  positioning: string
+  subheading: string
 }
 
 export type StepItem = {
@@ -52,7 +53,6 @@ type LandingContent = {
     foundationDescription: string
     foundationEyebrow: string
     foundationHeading: string
-    secondaryAction: string
   }
   sdlcSteps: readonly StepItem[]
   whyFounders: {
@@ -70,7 +70,10 @@ export const landingContent = {
   hero: {
     eyebrow: 'AI software delivery for founders',
     heading: 'Turn product intent into production-ready software.',
-    lead: 'ZeroClaw helps founders move from idea to shipped code with GitHub-native planning, implementation, deployment, and operational support.',
+    subheading:
+      'An autonomous delivery agent that works inside your GitHub flow.',
+    positioning:
+      'Describe the product direction, keep ownership of the repository, and let ZeroClaw plan, implement, validate, and ship focused changes through pull requests.',
   },
   navItems: [
     { href: `#${sectionIds.howItWorks}`, label: 'How it works' },
@@ -150,6 +153,5 @@ export const landingContent = {
       'Reusable layout and UI primitives are ready for the landing page.',
     foundationDescription:
       'Future sections can now compose a consistent shell, constrained containers, anchored sections, and CTA buttons without repeating layout mechanics.',
-    secondaryAction: 'View layout foundation',
   },
 } satisfies LandingContent
