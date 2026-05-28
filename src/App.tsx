@@ -1,4 +1,5 @@
 import { PageShell } from './components/layout/PageShell'
+import { Footer } from './components/Footer'
 import { NavBar } from './components/NavBar'
 import { FAQ } from './sections/FAQ'
 import { Features } from './sections/Features'
@@ -9,7 +10,7 @@ import { WhyFounders } from './sections/WhyFounders'
 
 function App() {
   return (
-    <PageShell header={<NavBar />}>
+    <PageShell header={<NavBar />} footer={<Footer />}>
       <Hero />
       <HowItWorks />
       <Features />
