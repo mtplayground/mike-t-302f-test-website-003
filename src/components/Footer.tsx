@@ -33,7 +33,7 @@ export function Footer() {
 
           <nav aria-label="Footer sections">
             <h2 className="text-sm font-black uppercase text-ink">Sections</h2>
-            <ul className="mt-4 grid gap-3 text-sm font-semibold text-muted sm:grid-cols-2 lg:grid-cols-1">
+            <ul className="mt-4 grid gap-3 text-sm font-semibold text-muted min-[420px]:grid-cols-2 lg:grid-cols-1">
               {footer.anchorLinks.map((link) => (
                 <li key={link.href}>
                   <a
@@ -49,11 +49,11 @@ export function Footer() {
 
           <nav aria-label="Social links">
             <h2 className="text-sm font-black uppercase text-ink">Connect</h2>
-            <ul className="mt-4 flex flex-wrap gap-3 lg:max-w-44">
+            <ul className="mt-4 grid gap-3 min-[420px]:flex min-[420px]:flex-wrap lg:max-w-44">
               {footer.socialLinks.map((link) => (
                 <li key={link.href}>
                   <a
-                    className="inline-flex min-h-10 items-center rounded-panel border border-ink/15 bg-surface px-4 text-sm font-bold text-ink transition-colors hover:border-accent hover:text-accent-strong"
+                    className="inline-flex min-h-10 w-full items-center justify-center rounded-panel border border-ink/15 bg-surface px-4 text-sm font-bold text-ink transition-colors hover:border-accent hover:text-accent-strong min-[420px]:w-auto"
                     href={link.href}
                     aria-label={link.ariaLabel}
                     target={isHttpUrl(link.href) ? '_blank' : undefined}

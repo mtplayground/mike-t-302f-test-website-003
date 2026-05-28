@@ -20,11 +20,11 @@ export function WhyFounders() {
             </p>
             <h2
               id="why-founders-title"
-              className="max-w-3xl text-5xl font-black"
+              className="max-w-3xl text-4xl font-black sm:text-5xl"
             >
               {whyFounders.heading}
             </h2>
-            <p className="mt-6 max-w-2xl text-2xl font-semibold leading-tight text-ink">
+            <p className="mt-6 max-w-2xl text-xl font-semibold leading-tight text-ink sm:text-2xl">
               {whyFounders.pitch}
             </p>
           </div>
@@ -34,7 +34,7 @@ export function WhyFounders() {
               <p className="text-lede text-muted">{whyFounders.body}</p>
             </div>
 
-            <div className="mt-4 grid gap-4 sm:grid-cols-3">
+            <div className="mt-4 grid gap-4 md:grid-cols-3">
               {whyFounders.benefits.map((benefit) => (
                 <article
                   className="rounded-panel border border-ink/10 bg-surface p-5 shadow-panel"

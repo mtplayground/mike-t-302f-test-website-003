@@ -10,12 +10,12 @@ export function Hero() {
   return (
     <Section
       id={sectionIds.home}
-      className="relative min-h-[calc(100vh-4rem)] overflow-hidden border-b border-ink/10"
+      className="relative overflow-hidden border-b border-ink/10 lg:min-h-[calc(100vh-4rem)]"
       aria-labelledby="hero-title"
     >
       <Container
         size="wide"
-        className="grid min-h-[calc(100vh-12rem)] items-center gap-12 lg:grid-cols-[1.03fr_0.97fr]"
+        className="grid items-center gap-10 lg:min-h-[calc(100vh-12rem)] lg:grid-cols-[1.03fr_0.97fr] lg:gap-12"
       >
         <div className="max-w-4xl">
           <p className="mb-5 text-eyebrow uppercase text-accent">
@@ -30,10 +30,11 @@ export function Hero() {
           <p className="mt-6 max-w-2xl text-lede text-muted">
             {hero.positioning}
           </p>
-          <div className="mt-9 flex flex-wrap items-center gap-4">
+          <div className="mt-9 flex flex-col items-stretch gap-4 sm:flex-row sm:flex-wrap sm:items-center">
             <Button
               href={appConfig.ctaUrl}
               size="lg"
+              className="w-full sm:w-auto"
               aria-label={cta.ariaLabel}
             >
               {cta.label}
@@ -48,7 +49,7 @@ export function Hero() {
         <div className="grid gap-4 lg:relative lg:min-h-[560px]" aria-hidden>
           <div className="absolute inset-0 hidden rounded-panel border border-ink/10 bg-surface shadow-panel lg:block" />
           <div className="relative rounded-panel border border-ink/10 bg-paper p-4 shadow-panel lg:absolute lg:left-8 lg:right-16 lg:top-8">
-            <div className="flex items-center justify-between gap-4 border-b border-ink/10 pb-4">
+            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-ink/10 pb-4">
               <div>
                 <p className="text-xs font-bold uppercase text-accent">
                   GitHub issue
@@ -57,7 +58,7 @@ export function Hero() {
                   Build founder onboarding
                 </p>
               </div>
-              <span className="rounded-full bg-signal px-3 py-1 text-xs font-bold text-ink">
+              <span className="shrink-0 rounded-full bg-signal px-3 py-1 text-xs font-bold text-ink">
                 planned
               </span>
             </div>
@@ -77,9 +78,9 @@ export function Hero() {
           </div>
 
           <div className="relative rounded-panel bg-ink p-5 text-paper shadow-panel lg:absolute lg:bottom-14 lg:left-6 lg:right-24">
-            <div className="flex items-center justify-between gap-4 border-b border-paper/15 pb-4">
+            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-paper/15 pb-4">
               <p className="text-sm font-bold">pull request #47</p>
-              <span className="rounded-full bg-paper/10 px-3 py-1 text-xs font-bold">
+              <span className="shrink-0 rounded-full bg-paper/10 px-3 py-1 text-xs font-bold">
                 checks passing
               </span>
             </div>

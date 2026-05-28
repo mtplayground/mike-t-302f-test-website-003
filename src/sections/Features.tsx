@@ -47,7 +47,7 @@ export function Features() {
           <p className="mb-4 text-eyebrow uppercase text-accent">
             {featureSection.eyebrow}
           </p>
-          <h2 id="features-title" className="text-4xl font-black">
+          <h2 id="features-title" className="text-3xl font-black sm:text-4xl">
             {featureSection.heading}
           </h2>
           <p className="mt-5 max-w-3xl text-lede text-muted">
@@ -61,7 +61,7 @@ export function Features() {
 
             return (
               <article
-                className={`min-h-[280px] rounded-panel border border-ink/10 p-6 shadow-panel ${style.card}`}
+                className={`rounded-panel border border-ink/10 p-5 shadow-panel sm:p-6 md:min-h-[280px] ${style.card}`}
                 key={feature.title}
               >
                 <div className="flex items-start justify-between gap-4">
@@ -74,7 +74,9 @@ export function Features() {
                     0{index + 1}
                   </span>
                 </div>
-                <h3 className={`mt-12 text-3xl font-black ${style.title}`}>
+                <h3
+                  className={`mt-8 text-2xl font-black sm:mt-12 sm:text-3xl ${style.title}`}
+                >
                   {feature.title}
                 </h3>
                 <p
