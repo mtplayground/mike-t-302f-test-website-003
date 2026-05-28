@@ -1,4 +1,4 @@
-const DEFAULT_CTA_URL = '#foundation'
+const DEFAULT_CTA_URL = '#final-cta'
 
 function isSupportedCtaTarget(value: string) {
   if (value.startsWith('#')) {

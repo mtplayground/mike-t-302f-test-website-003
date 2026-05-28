@@ -2,6 +2,7 @@ import type { ComponentPropsWithoutRef, ReactNode } from 'react'
 
 const variantClasses = {
   primary: 'bg-ink text-paper hover:bg-accent-strong',
+  signal: 'bg-signal text-ink hover:bg-paper',
   secondary:
     'border border-ink/15 bg-surface text-ink hover:border-accent hover:text-accent-strong',
   ghost: 'text-ink hover:bg-ink/5',
