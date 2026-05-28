@@ -4,6 +4,7 @@ const toneClasses = {
   default: 'bg-paper',
   surface: 'bg-surface',
   accent: 'bg-accent-soft',
+  ink: 'bg-ink text-paper',
 }
 
 type SectionProps = ComponentPropsWithoutRef<'section'> & {

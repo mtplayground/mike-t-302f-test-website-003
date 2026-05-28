@@ -51,6 +51,11 @@ export type FaqItem = {
 type LandingContent = {
   brandName: string
   cta: CtaConfig
+  finalCta: {
+    description: string
+    eyebrow: string
+    heading: string
+  }
   faq: readonly FaqItem[]
   faqSection: {
     description: string
@@ -71,11 +76,6 @@ type LandingContent = {
     loopNote: string
   }
   navItems: readonly NavItem[]
-  scaffold: {
-    foundationDescription: string
-    foundationEyebrow: string
-    foundationHeading: string
-  }
   sdlcSteps: readonly StepItem[]
   whyFounders: {
     benefits: readonly BenefitItem[]
@@ -91,6 +91,13 @@ export const landingContent = {
   cta: {
     ariaLabel: 'Start a project with ZeroClaw',
     label: 'Start with ZeroClaw',
+  },
+  finalCta: {
+    eyebrow: 'Ready to ship',
+    heading:
+      'Bring ZeroClaw into your repo and start turning founder intent into merged code.',
+    description:
+      'Use the CTA target for your booking flow, intake form, or direct contact path. The code stays yours, and the work lands as reviewable pull requests.',
   },
   hero: {
     eyebrow: 'AI software delivery for founders',
@@ -214,12 +221,5 @@ export const landingContent = {
     heading: 'Common questions before you hand work to an autonomous agent.',
     description:
       'A short set of answers about ownership, collaboration, and how ZeroClaw fits into an existing GitHub workflow.',
-  },
-  scaffold: {
-    foundationEyebrow: 'Shared foundation',
-    foundationHeading:
-      'Reusable layout and UI primitives are ready for the landing page.',
-    foundationDescription:
-      'Future sections can now compose a consistent shell, constrained containers, anchored sections, and CTA buttons without repeating layout mechanics.',
   },
 } satisfies LandingContent
