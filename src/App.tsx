@@ -3,6 +3,7 @@ import { PageShell } from './components/layout/PageShell'
 import { Section } from './components/layout/Section'
 import { NavBar } from './components/NavBar'
 import { landingContent } from './config/content'
+import { Features } from './sections/Features'
 import { Hero } from './sections/Hero'
 import { HowItWorks } from './sections/HowItWorks'
 
@@ -13,6 +14,7 @@ function App() {
     <PageShell header={<NavBar />}>
       <Hero />
       <HowItWorks />
+      <Features />
 
       <Section
         id="foundation"

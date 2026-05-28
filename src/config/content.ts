@@ -46,6 +46,11 @@ type LandingContent = {
   brandName: string
   cta: CtaConfig
   faq: readonly FaqItem[]
+  featureSection: {
+    description: string
+    eyebrow: string
+    heading: string
+  }
   features: readonly FeatureItem[]
   hero: HeroContent
   howItWorks: {
@@ -88,6 +93,12 @@ export const landingContent = {
       'ZeroClaw keeps strategy, code, release, and production feedback connected so each change has a clear path from intent to operation.',
     loopNote:
       'Operate feeds production signals and priorities back into Plan for the next focused change.',
+  },
+  featureSection: {
+    eyebrow: 'Features',
+    heading: 'Built for shipping real software, not just generating snippets.',
+    description:
+      'ZeroClaw keeps the important parts of product delivery explicit: where the work lives, how it moves, how it is validated, and who owns the result.',
   },
   navItems: [
     { href: `#${sectionIds.howItWorks}`, label: 'How it works' },
