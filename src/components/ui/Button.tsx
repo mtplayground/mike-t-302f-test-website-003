@@ -39,7 +39,7 @@ function getButtonClasses({
   variant = 'primary',
 }: Pick<ButtonBaseProps, 'className' | 'size' | 'variant'>) {
   return [
-    'inline-flex items-center justify-center rounded-panel font-semibold transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-signal focus-visible:ring-offset-2 focus-visible:ring-offset-paper disabled:pointer-events-none disabled:opacity-50',
+    'inline-flex items-center justify-center rounded-panel font-semibold transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-strong focus-visible:ring-offset-2 focus-visible:ring-offset-paper disabled:pointer-events-none disabled:opacity-50',
     variantClasses[variant],
     sizeClasses[size],
     className,

@@ -1,12 +1,48 @@
-import { useId, useState } from 'react'
+import { useId, useRef, useState } from 'react'
+import type { KeyboardEvent } from 'react'
 import { Container } from '../components/layout/Container'
 import { Section } from '../components/layout/Section'
 import { landingContent, sectionIds } from '../config/content'
 
 export function FAQ() {
   const accordionId = useId()
+  const buttonRefs = useRef<Array<HTMLButtonElement | null>>([])
   const [openIndex, setOpenIndex] = useState<number | null>(0)
   const { faq, faqSection } = landingContent
+
+  function focusButton(index: number) {
+    buttonRefs.current[index]?.focus()
+  }
+
+  function handleQuestionKeyDown(
+    index: number,
+    event: KeyboardEvent<HTMLButtonElement>,
+  ) {
+    const lastIndex = faq.length - 1
+
+    if (event.key === 'ArrowDown') {
+      event.preventDefault()
+      focusButton(index === lastIndex ? 0 : index + 1)
+      return
+    }
+
+    if (event.key === 'ArrowUp') {
+      event.preventDefault()
+      focusButton(index === 0 ? lastIndex : index - 1)
+      return
+    }
+
+    if (event.key === 'Home') {
+      event.preventDefault()
+      focusButton(0)
+      return
+    }
+
+    if (event.key === 'End') {
+      event.preventDefault()
+      focusButton(lastIndex)
+    }
+  }
 
   return (
     <Section
@@ -41,6 +77,9 @@ export function FAQ() {
                 >
                   <h3>
                     <button
+                      ref={(element) => {
+                        buttonRefs.current[index] = element
+                      }}
                       className="flex w-full items-center justify-between gap-4 rounded-panel px-4 py-5 text-left text-base font-black text-ink transition-colors hover:bg-ink/5 sm:px-5 sm:text-lg"
                       type="button"
                       id={buttonId}
@@ -51,6 +90,7 @@ export function FAQ() {
                           currentIndex === index ? null : index,
                         )
                       }
+                      onKeyDown={(event) => handleQuestionKeyDown(index, event)}
                     >
                       <span>{item.question}</span>
                       <span

@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
+import type { KeyboardEvent } from 'react'
 import { Container } from './layout/Container'
 import { Button } from './ui/Button'
 import { landingContent, sectionIds } from '../config/content'
@@ -9,10 +10,21 @@ const navLinkClasses =
 
 export function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const menuButtonRef = useRef<HTMLButtonElement>(null)
   const { brandName, cta, navItems } = landingContent
 
   function closeMenu() {
     setIsMenuOpen(false)
+  }
+
+  function handleMobileMenuKeyDown(event: KeyboardEvent<HTMLDivElement>) {
+    if (event.key !== 'Escape') {
+      return
+    }
+
+    event.preventDefault()
+    closeMenu()
+    menuButtonRef.current?.focus()
   }
 
   return (
@@ -50,6 +62,7 @@ export function NavBar() {
         </div>
 
         <button
+          ref={menuButtonRef}
           className="inline-flex size-11 items-center justify-center rounded-panel border border-ink/15 bg-surface text-ink transition-colors hover:border-accent hover:text-accent-strong md:hidden"
           type="button"
           aria-controls="mobile-menu"
@@ -72,6 +85,7 @@ export function NavBar() {
         <div
           id="mobile-menu"
           className="border-t border-ink/10 bg-paper shadow-panel md:hidden"
+          onKeyDown={handleMobileMenuKeyDown}
         >
           <Container className="grid gap-2 py-4">
             <nav className="grid gap-1" aria-label="Mobile primary">

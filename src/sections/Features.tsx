@@ -70,7 +70,7 @@ export function Features() {
                   >
                     {style.label}
                   </span>
-                  <span className="text-sm font-black opacity-60">
+                  <span className="text-sm font-black opacity-75">
                     0{index + 1}
                   </span>
                 </div>

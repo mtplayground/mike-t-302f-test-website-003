@@ -25,7 +25,7 @@ export function FinalCTA() {
             >
               {finalCta.heading}
             </h2>
-            <p className="mt-6 max-w-3xl text-lede text-paper/70">
+            <p className="mt-6 max-w-3xl text-lede text-paper/80">
               {finalCta.description}
             </p>
           </div>
@@ -40,7 +40,7 @@ export function FinalCTA() {
             >
               {cta.label}
             </Button>
-            <p className="max-w-xs text-sm font-semibold leading-6 text-paper/60">
+            <p className="max-w-xs text-sm font-semibold leading-6 text-paper/75">
               Planning, code changes, validation, and deployment stay attached
               to your GitHub history.
             </p>
