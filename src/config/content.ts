@@ -37,6 +37,12 @@ export type FeatureItem = {
   title: string
 }
 
+export type BenefitItem = {
+  description: string
+  label: string
+  value: string
+}
+
 export type FaqItem = {
   answer: string
   question: string
@@ -67,8 +73,11 @@ type LandingContent = {
   }
   sdlcSteps: readonly StepItem[]
   whyFounders: {
+    benefits: readonly BenefitItem[]
     body: string
+    eyebrow: string
     heading: string
+    pitch: string
   }
 }
 
@@ -151,9 +160,32 @@ export const landingContent = {
     },
   ],
   whyFounders: {
+    eyebrow: 'Why founders',
     heading:
-      'Founders should be able to talk through the product and see code move.',
+      'Just talk through the product. ZeroClaw turns it into shipped code.',
+    pitch:
+      'Skip the translation layer between product intent, tickets, implementation details, and release chores.',
     body: 'ZeroClaw removes the translation gap between product direction and implementation details so small teams can spend less time coordinating and more time shipping.',
+    benefits: [
+      {
+        value: 'Less handoff',
+        label: 'Time',
+        description:
+          'Product context moves directly into scoped issues, branches, and pull requests.',
+      },
+      {
+        value: 'Lower overhead',
+        label: 'Cost',
+        description:
+          'Reduce repeated planning, status, and implementation coordination loops.',
+      },
+      {
+        value: 'Faster feedback',
+        label: 'Momentum',
+        description:
+          'Smaller validated changes make it easier to learn from users and keep moving.',
+      },
+    ],
   },
   faq: [
     {

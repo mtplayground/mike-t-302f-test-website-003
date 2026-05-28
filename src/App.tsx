@@ -6,6 +6,7 @@ import { landingContent } from './config/content'
 import { Features } from './sections/Features'
 import { Hero } from './sections/Hero'
 import { HowItWorks } from './sections/HowItWorks'
+import { WhyFounders } from './sections/WhyFounders'
 
 function App() {
   const { scaffold } = landingContent
@@ -15,6 +16,7 @@ function App() {
       <Hero />
       <HowItWorks />
       <Features />
+      <WhyFounders />
 
       <Section
         id="foundation"
