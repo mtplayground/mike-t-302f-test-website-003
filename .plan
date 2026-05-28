@@ -1,68 +1,68 @@
-Architecture plan for issues #3-#12
+Architecture plan for issues #23-#28
 
 Project shape
-- Existing app is Vite + React + TypeScript with npm scripts for dev, build,
-  preview, lint, and format.
-- Keep the site as a single-page landing page assembled from section
-  components in `src/App.tsx`; no router is needed for anchor navigation.
-- Use Tailwind CSS for page styling once issue #3 lands. Retire most custom
-  `App.css` styles as sections are converted to utility classes and shared
-  primitives.
+- Vite + React + TypeScript single-page landing site with Tailwind CSS.
+- Page composition lives in `src/App.tsx`, with reusable layout primitives in
+  `src/components/layout`, navigation in `src/components/NavBar.tsx`, CTAs in
+  `src/components/ui/Button.tsx`, and page sections in `src/sections`.
+- Shared landing-page copy, anchor ids, and content-facing types live in
+  `src/config/content.ts`; environment-specific CTA wiring lives in
+  `src/config/env.ts`.
 
 Module structure and file organization
-- `src/main.tsx`: React bootstrap only.
-- `src/App.tsx`: top-level page composition, importing layout, nav, and section
-  modules.
-- `src/index.css`: Tailwind directives, global CSS variables, base element
-  styles, smooth scrolling, focus defaults, and any small global resets.
-- `src/components/layout/Container.tsx`: width-constrained responsive wrapper.
-- `src/components/layout/Section.tsx`: section shell with anchor id, spacing,
-  optional visual variants, and accessible labelling hooks.
-- `src/components/ui/Button.tsx`: reusable CTA/link button with variants and
-  sizes.
-- `src/components/NavBar.tsx`: sticky responsive navigation with desktop links,
-  CTA, and mobile menu state.
-- `src/sections/Hero.tsx`, `HowItWorks.tsx`, `Features.tsx`,
-  `WhyFounders.tsx`, `FAQ.tsx`, `FinalCTA.tsx`: issue-owned landing page
-  sections.
-- `src/config/content.ts`: typed copy/config for nav links, CTA text, section
-  copy, feature cards, SDLC steps, founder narrative, and FAQs.
-- `src/config/env.ts`: build-time Vite env adapter for the CTA target.
-- `.env.example`: documents `VITE_CTA_URL`.
+- Add `src/components/Footer.tsx` for issue #23. It should consume
+  `landingContent.brandName`, existing nav items, CTA config, and new typed
+  footer/social/link content from `src/config/content.ts`.
+- Keep footer placement in `PageShell` or `App` explicit. Prefer `PageShell`
+  accepting an optional `footer` prop if the footer is part of the global page
+  frame; otherwise append `<Footer />` after `<FinalCTA />` in `App`.
+- Keep section-level responsive fixes in their owning files:
+  `Hero.tsx`, `HowItWorks.tsx`, `Features.tsx`, `WhyFounders.tsx`, `FAQ.tsx`,
+  `FinalCTA.tsx`, plus `NavBar.tsx`, `Footer.tsx`, `Container.tsx`, and
+  `Section.tsx` when the issue is cross-cutting.
+- Add test assets for issue #27 under a conventional path such as
+  `tests/e2e/smoke.spec.ts` or `src/__tests__` depending on the selected test
+  runner. For browser smoke coverage, prefer Playwright with a Vite preview or
+  dev server command.
+- Add deployment documentation for issue #28 in `README.md` or a focused
+  `DEPLOYMENT.md`, and keep static build output in ignored `dist/`.
 
 Shared types
-- Define content-facing types near the content module, for example `NavItem`,
-  `CtaConfig`, `HeroContent`, `StepItem`, `FeatureItem`, `FaqItem`, and
-  `SectionId`.
-- Keep component prop types colocated with components unless reused across
-  modules.
-- Model anchor ids as a string literal union so nav links and section ids stay
-  consistent at compile time.
+- Extend `src/config/content.ts` with footer-specific types such as
+  `FooterLink`, `SocialLink`, and `FooterContent`.
+- Reuse `NavItem`, `AnchorHref`, `CtaConfig`, and `SectionId` for footer links
+  rather than duplicating anchor strings.
+- If animation config is needed for issue #26, colocate small prop types with a
+  reusable wrapper such as `src/components/motion/Reveal.tsx`; keep content
+  types separate from animation implementation details.
 
 Dependencies between issues
-- #3 Tailwind tokens is the styling foundation for all visual work.
-- #4 layout primitives depends on #3 and should establish the reusable page
-  structure consumed by every later section.
-- #5 content/env config can proceed after the base app is in place and should
-  be used by #6-#12 to avoid hard-coded copy and CTA URLs.
-- #6 nav depends on #3, #4, and benefits from #5 for links and CTA config.
-- #7 hero depends on #3, #4, and #5 for visual tokens, layout, and copy/CTA.
-- #8, #9, #10, #11, and #12 depend on #3/#4 and should consume #5 content.
-- Final integration should ensure all anchor ids used by #6 exist in the
-  corresponding section components.
+- #23 footer should happen first because it adds the final page region that
+  responsive, accessibility, animation, test, and deployment work must cover.
+- #24 responsive pass depends on all visible sections and the new footer being
+  present. It should verify mobile, tablet, desktop, and wide desktop widths.
+- #25 accessibility pass should follow the footer and responsive work so
+  semantics, focus order, keyboard behavior, contrast, and reduced-motion
+  behavior are checked against the final page structure.
+- #26 scroll/hover animation polish should follow accessibility decisions and
+  must respect `prefers-reduced-motion`.
+- #27 end-to-end smoke test should cover the full integrated page after the
+  footer and key visible behavior are stable.
+- #28 production build and self-hosted deployment prep depends on the smoke test
+  and should document `npm run build`, `npm run preview`, serving `dist/`, and
+  required environment variables such as `VITE_CTA_URL`.
 
 Key design decisions
-- Use Tailwind theme tokens for the corust.ai-inspired look: high-contrast
-  neutral base, sharp typography, restrained accent colors, consistent section
-  spacing, and responsive container widths.
-- Keep UI primitives small and semantic. `Button` should support rendering as
-  an anchor for CTAs; `Section` should own spacing and ids; `Container` should
-  own horizontal rhythm.
-- Prefer static typed content over inline literals inside presentation
-  components so later copy changes do not require touching layout code.
-- Read `import.meta.env.VITE_CTA_URL` through a tiny config layer with a
-  sensible fallback, and document it in `.env.example`.
-- Implement the FAQ accordion with native accessible controls or explicit ARIA
-  state; no headless UI dependency is needed unless later complexity demands it.
-- Keep the landing page lightweight: no routing, global state library, data
-  fetching layer, or component framework beyond React and Tailwind.
+- Keep the site lightweight: no router, no global state library, and no extra
+  component framework unless an issue clearly needs one.
+- Keep anchor navigation typed through `sectionIds` and `AnchorHref` so nav and
+  footer links stay consistent with actual section ids.
+- Use semantic landmarks: one header, main content, and footer; sections should
+  remain labelled and navigable.
+- Prefer native controls for FAQ and navigation interactions. Any animation
+  library introduced for #26 should be small, tree-shakeable, and limited to
+  presentational reveal/hover behavior.
+- Preserve WCAG AA contrast and visible focus states while polishing visuals.
+- Build verification should use the existing Node toolchain:
+  `npm run lint`, `npm run build`, then a static preview/server check against
+  `dist/`.
