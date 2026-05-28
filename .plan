@@ -1,29 +1,68 @@
-Architecture plan
+Architecture plan for issues #3-#12
 
-Scope
-- Issue #1 initializes a Vite + React + TypeScript application with development, build, linting, and formatting scripts.
+Project shape
+- Existing app is Vite + React + TypeScript with npm scripts for dev, build,
+  preview, lint, and format.
+- Keep the site as a single-page landing page assembled from section
+  components in `src/App.tsx`; no router is needed for anchor navigation.
+- Use Tailwind CSS for page styling once issue #3 lands. Retire most custom
+  `App.css` styles as sections are converted to utility classes and shared
+  primitives.
 
 Module structure and file organization
-- `package.json`: npm scripts and frontend dependencies.
-- `index.html`: Vite HTML entry point.
-- `vite.config.ts`: Vite React plugin configuration.
-- `tsconfig.json`, `tsconfig.app.json`, `tsconfig.node.json`: TypeScript project configuration split between browser app code and tooling config.
-- `eslint.config.js` and Prettier configuration: linting and formatting baseline.
-- `src/main.tsx`: React root bootstrap.
-- `src/App.tsx`: initial application shell.
-- `src/index.css` or `src/App.css`: global styles and app-specific styling.
-- `public/`: static assets served directly by Vite.
+- `src/main.tsx`: React bootstrap only.
+- `src/App.tsx`: top-level page composition, importing layout, nav, and section
+  modules.
+- `src/index.css`: Tailwind directives, global CSS variables, base element
+  styles, smooth scrolling, focus defaults, and any small global resets.
+- `src/components/layout/Container.tsx`: width-constrained responsive wrapper.
+- `src/components/layout/Section.tsx`: section shell with anchor id, spacing,
+  optional visual variants, and accessible labelling hooks.
+- `src/components/ui/Button.tsx`: reusable CTA/link button with variants and
+  sizes.
+- `src/components/NavBar.tsx`: sticky responsive navigation with desktop links,
+  CTA, and mobile menu state.
+- `src/sections/Hero.tsx`, `HowItWorks.tsx`, `Features.tsx`,
+  `WhyFounders.tsx`, `FAQ.tsx`, `FinalCTA.tsx`: issue-owned landing page
+  sections.
+- `src/config/content.ts`: typed copy/config for nav links, CTA text, section
+  copy, feature cards, SDLC steps, founder narrative, and FAQs.
+- `src/config/env.ts`: build-time Vite env adapter for the CTA target.
+- `.env.example`: documents `VITE_CTA_URL`.
 
 Shared types
-- No shared domain types are needed for the initial scaffold.
-- Future shared TypeScript types should live under `src/types/` once the app has domain models or API contracts.
+- Define content-facing types near the content module, for example `NavItem`,
+  `CtaConfig`, `HeroContent`, `StepItem`, `FeatureItem`, `FaqItem`, and
+  `SectionId`.
+- Keep component prop types colocated with components unless reused across
+  modules.
+- Model anchor ids as a string literal union so nav links and section ids stay
+  consistent at compile time.
 
 Dependencies between issues
-- Issue #1 is the foundation for all future frontend work.
-- Later issues should depend on this scaffold for scripts, TypeScript settings, linting, formatting, and source layout.
+- #3 Tailwind tokens is the styling foundation for all visual work.
+- #4 layout primitives depends on #3 and should establish the reusable page
+  structure consumed by every later section.
+- #5 content/env config can proceed after the base app is in place and should
+  be used by #6-#12 to avoid hard-coded copy and CTA URLs.
+- #6 nav depends on #3, #4, and benefits from #5 for links and CTA config.
+- #7 hero depends on #3, #4, and #5 for visual tokens, layout, and copy/CTA.
+- #8, #9, #10, #11, and #12 depend on #3/#4 and should consume #5 content.
+- Final integration should ensure all anchor ids used by #6 exist in the
+  corresponding section components.
 
 Key design decisions
-- Use Vite's React + TypeScript template shape to keep the project conventional and easy to maintain.
-- Keep the initial app minimal, with no routing, state library, API client, or UI framework until a future issue requires it.
-- Prefer npm scripts that cover `dev`, `build`, `preview`, `lint`, and `format` so CI and local workflows are predictable.
-- Keep generated and secret/runtime files out of version control via `.gitignore`.
+- Use Tailwind theme tokens for the corust.ai-inspired look: high-contrast
+  neutral base, sharp typography, restrained accent colors, consistent section
+  spacing, and responsive container widths.
+- Keep UI primitives small and semantic. `Button` should support rendering as
+  an anchor for CTAs; `Section` should own spacing and ids; `Container` should
+  own horizontal rhythm.
+- Prefer static typed content over inline literals inside presentation
+  components so later copy changes do not require touching layout code.
+- Read `import.meta.env.VITE_CTA_URL` through a tiny config layer with a
+  sensible fallback, and document it in `.env.example`.
+- Implement the FAQ accordion with native accessible controls or explicit ARIA
+  state; no headless UI dependency is needed unless later complexity demands it.
+- Keep the landing page lightweight: no routing, global state library, data
+  fetching layer, or component framework beyond React and Tailwind.
