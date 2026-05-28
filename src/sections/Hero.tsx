@@ -1,5 +1,6 @@
 import { Container } from '../components/layout/Container'
 import { Section } from '../components/layout/Section'
+import { Reveal } from '../components/motion/Reveal'
 import { Button } from '../components/ui/Button'
 import { landingContent, sectionIds } from '../config/content'
 import { appConfig } from '../config/env'
@@ -17,7 +18,7 @@ export function Hero() {
         size="wide"
         className="grid items-center gap-10 lg:min-h-[calc(100vh-12rem)] lg:grid-cols-[1.03fr_0.97fr] lg:gap-12"
       >
-        <div className="max-w-4xl">
+        <Reveal className="max-w-4xl">
           <p className="mb-5 text-eyebrow uppercase text-accent">
             {hero.eyebrow}
           </p>
@@ -44,9 +45,13 @@ export function Hero() {
               from one focused agent.
             </span>
           </div>
-        </div>
+        </Reveal>
 
-        <div className="grid gap-4 lg:relative lg:min-h-[560px]" aria-hidden>
+        <Reveal
+          className="grid gap-4 lg:relative lg:min-h-[560px]"
+          revealDelay={0.12}
+          aria-hidden
+        >
           <div className="absolute inset-0 hidden rounded-panel border border-ink/10 bg-surface shadow-panel lg:block" />
           <div className="relative rounded-panel border border-ink/10 bg-paper p-4 shadow-panel lg:absolute lg:left-8 lg:right-16 lg:top-8">
             <div className="flex flex-wrap items-center justify-between gap-4 border-b border-ink/10 pb-4">
@@ -106,7 +111,7 @@ export function Hero() {
               Merged changes stay in the founder-owned repo.
             </p>
           </div>
-        </div>
+        </Reveal>
       </Container>
     </Section>
   )

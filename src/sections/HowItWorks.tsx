@@ -1,5 +1,6 @@
 import { Container } from '../components/layout/Container'
 import { Section } from '../components/layout/Section'
+import { HoverListItem, Reveal } from '../components/motion/Reveal'
 import { landingContent, sectionIds } from '../config/content'
 
 export function HowItWorks() {
@@ -13,7 +14,7 @@ export function HowItWorks() {
       aria-labelledby="how-it-works-title"
     >
       <Container size="wide">
-        <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+        <Reveal className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
           <div>
             <p className="mb-4 text-eyebrow uppercase text-accent">
               {howItWorks.eyebrow}
@@ -28,13 +29,14 @@ export function HowItWorks() {
           <p className="max-w-3xl text-lede text-muted">
             {howItWorks.description}
           </p>
-        </div>
+        </Reveal>
 
         <ol className="mt-12 grid gap-4 lg:grid-cols-4">
           {sdlcSteps.map((step, index) => (
-            <li
+            <HoverListItem
               className="relative rounded-panel border border-ink/10 bg-paper p-5 shadow-panel sm:p-6"
               key={step.label}
+              revealDelay={index * 0.05}
             >
               <div className="flex items-center justify-between gap-4">
                 <span className="text-sm font-black text-accent">
@@ -58,13 +60,16 @@ export function HowItWorks() {
                   &rarr;
                 </span>
               ) : null}
-            </li>
+            </HoverListItem>
           ))}
         </ol>
 
-        <div className="mt-6 rounded-panel border border-dashed border-accent/40 bg-accent-soft px-5 py-4 text-sm font-semibold leading-6 text-accent-strong">
+        <Reveal
+          className="mt-6 rounded-panel border border-dashed border-accent/40 bg-accent-soft px-5 py-4 text-sm font-semibold leading-6 text-accent-strong"
+          revealDelay={0.16}
+        >
           {howItWorks.loopNote}
-        </div>
+        </Reveal>
       </Container>
     </Section>
   )

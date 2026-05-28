@@ -2,6 +2,7 @@ import { useId, useRef, useState } from 'react'
 import type { KeyboardEvent } from 'react'
 import { Container } from '../components/layout/Container'
 import { Section } from '../components/layout/Section'
+import { Reveal } from '../components/motion/Reveal'
 import { landingContent, sectionIds } from '../config/content'
 
 export function FAQ() {
@@ -52,7 +53,7 @@ export function FAQ() {
     >
       <Container size="wide">
         <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
-          <div className="max-w-3xl">
+          <Reveal className="max-w-3xl">
             <p className="mb-4 text-eyebrow uppercase text-accent">
               {faqSection.eyebrow}
             </p>
@@ -62,9 +63,9 @@ export function FAQ() {
             <p className="mt-5 text-lede text-muted">
               {faqSection.description}
             </p>
-          </div>
+          </Reveal>
 
-          <div className="grid gap-3">
+          <Reveal className="grid gap-3" revealDelay={0.1}>
             {faq.map((item, index) => {
               const isOpen = openIndex === index
               const buttonId = `${accordionId}-button-${index}`
@@ -115,7 +116,7 @@ export function FAQ() {
                 </article>
               )
             })}
-          </div>
+          </Reveal>
         </div>
       </Container>
     </Section>
