@@ -1,5 +1,6 @@
 import { Container } from '../components/layout/Container'
 import { Section } from '../components/layout/Section'
+import { HoverCard, Reveal } from '../components/motion/Reveal'
 import { landingContent, sectionIds } from '../config/content'
 
 const cardStyles = [
@@ -43,7 +44,7 @@ export function Features() {
       aria-labelledby="features-title"
     >
       <Container size="wide">
-        <div className="max-w-4xl">
+        <Reveal className="max-w-4xl">
           <p className="mb-4 text-eyebrow uppercase text-accent">
             {featureSection.eyebrow}
           </p>
@@ -53,16 +54,17 @@ export function Features() {
           <p className="mt-5 max-w-3xl text-lede text-muted">
             {featureSection.description}
           </p>
-        </div>
+        </Reveal>
 
         <div className="mt-12 grid gap-4 md:grid-cols-2">
           {features.map((feature, index) => {
             const style = cardStyles[index % cardStyles.length]
 
             return (
-              <article
+              <HoverCard
                 className={`rounded-panel border border-ink/10 p-5 shadow-panel sm:p-6 md:min-h-[280px] ${style.card}`}
                 key={feature.title}
+                revealDelay={index * 0.05}
               >
                 <div className="flex items-start justify-between gap-4">
                   <span
@@ -84,7 +86,7 @@ export function Features() {
                 >
                   {feature.description}
                 </p>
-              </article>
+              </HoverCard>
             )
           })}
         </div>

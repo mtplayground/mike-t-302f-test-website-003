@@ -1,5 +1,6 @@
 import { Container } from '../components/layout/Container'
 import { Section } from '../components/layout/Section'
+import { Reveal } from '../components/motion/Reveal'
 import { Button } from '../components/ui/Button'
 import { landingContent, sectionIds } from '../config/content'
 import { appConfig } from '../config/env'
@@ -15,7 +16,7 @@ export function FinalCTA() {
     >
       <Container size="wide">
         <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
-          <div className="max-w-4xl">
+          <Reveal className="max-w-4xl">
             <p className="mb-4 text-eyebrow uppercase text-signal">
               {finalCta.eyebrow}
             </p>
@@ -28,9 +29,12 @@ export function FinalCTA() {
             <p className="mt-6 max-w-3xl text-lede text-paper/80">
               {finalCta.description}
             </p>
-          </div>
+          </Reveal>
 
-          <div className="flex flex-col gap-4 sm:max-w-xs lg:max-w-none">
+          <Reveal
+            className="flex flex-col gap-4 sm:max-w-xs lg:max-w-none"
+            revealDelay={0.1}
+          >
             <Button
               href={appConfig.ctaUrl}
               variant="signal"
@@ -44,7 +48,7 @@ export function FinalCTA() {
               Planning, code changes, validation, and deployment stay attached
               to your GitHub history.
             </p>
-          </div>
+          </Reveal>
         </div>
       </Container>
     </Section>
