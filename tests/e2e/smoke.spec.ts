@@ -31,7 +31,7 @@ test('renders the landing page, key sections, and CTA', async ({ page }) => {
     {
       id: 'why-founders',
       heading:
-        'Just talk through the product. ZeroClaw turns it into shipped code.',
+        'Just talk through the product. myClawTeam turns it into shipped code.',
     },
     {
       id: 'faq',
@@ -40,7 +40,7 @@ test('renders the landing page, key sections, and CTA', async ({ page }) => {
     {
       id: 'final-cta',
       heading:
-        'Bring ZeroClaw into your repo and start turning founder intent into merged code.',
+        'Bring myClawTeam into your repo and start turning founder intent into merged code.',
     },
   ] as const
 
@@ -52,11 +52,11 @@ test('renders the landing page, key sections, and CTA', async ({ page }) => {
   }
 
   await expect(
-    page.getByRole('link', { name: 'Start a project with ZeroClaw' }).first(),
+    page.getByRole('link', { name: 'Start a project with myClawTeam' }).first(),
   ).toBeVisible()
   await expect(
     page.getByRole('button', {
-      name: 'Does ZeroClaw replace engineers?',
+      name: 'Does myClawTeam replace engineers?',
     }),
   ).toBeVisible()
 })

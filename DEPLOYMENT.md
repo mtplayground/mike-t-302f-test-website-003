@@ -31,7 +31,7 @@ python3 -m http.server 8080 --bind 0.0.0.0 --directory dist
 ```
 
 The Vite build uses relative asset paths, so the same `dist/` directory can be
-served from a domain root or a subdirectory such as `/zeroclaw/`.
+served from a domain root or a subdirectory such as `/myclawteam/`.
 
 ## Static Host Checklist
 

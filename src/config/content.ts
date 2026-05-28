@@ -101,15 +101,15 @@ type LandingContent = {
 }
 
 export const landingContent = {
-  brandName: 'ZeroClaw',
+  brandName: 'myClawTeam',
   cta: {
-    ariaLabel: 'Start a project with ZeroClaw',
-    label: 'Start with ZeroClaw',
+    ariaLabel: 'Start a project with myClawTeam',
+    label: 'Start with myClawTeam',
   },
   finalCta: {
     eyebrow: 'Ready to ship',
     heading:
-      'Bring ZeroClaw into your repo and start turning founder intent into merged code.',
+      'Bring myClawTeam into your repo and start turning founder intent into merged code.',
     description:
       'Use the CTA target for your booking flow, intake form, or direct contact path. The code stays yours, and the work lands as reviewable pull requests.',
   },
@@ -119,13 +119,13 @@ export const landingContent = {
     subheading:
       'An autonomous delivery agent that works inside your GitHub flow.',
     positioning:
-      'Describe the product direction, keep ownership of the repository, and let ZeroClaw plan, implement, validate, and ship focused changes through pull requests.',
+      'Describe the product direction, keep ownership of the repository, and let myClawTeam plan, implement, validate, and ship focused changes through pull requests.',
   },
   howItWorks: {
     eyebrow: 'How it works',
     heading: 'A continuous SDLC loop for founder-led products.',
     description:
-      'ZeroClaw keeps strategy, code, release, and production feedback connected so each change has a clear path from intent to operation.',
+      'myClawTeam keeps strategy, code, release, and production feedback connected so each change has a clear path from intent to operation.',
     loopNote:
       'Operate feeds production signals and priorities back into Plan for the next focused change.',
   },
@@ -133,7 +133,7 @@ export const landingContent = {
     eyebrow: 'Features',
     heading: 'Built for shipping real software, not just generating snippets.',
     description:
-      'ZeroClaw keeps the important parts of product delivery explicit: where the work lives, how it moves, how it is validated, and who owns the result.',
+      'myClawTeam keeps the important parts of product delivery explicit: where the work lives, how it moves, how it is validated, and who owns the result.',
   },
   navItems: [
     { href: `#${sectionIds.howItWorks}`, label: 'How it works' },
@@ -188,10 +188,10 @@ export const landingContent = {
   whyFounders: {
     eyebrow: 'Why founders',
     heading:
-      'Just talk through the product. ZeroClaw turns it into shipped code.',
+      'Just talk through the product. myClawTeam turns it into shipped code.',
     pitch:
       'Skip the translation layer between product intent, tickets, implementation details, and release chores.',
-    body: 'ZeroClaw removes the translation gap between product direction and implementation details so small teams can spend less time coordinating and more time shipping.',
+    body: 'myClawTeam removes the translation gap between product direction and implementation details so small teams can spend less time coordinating and more time shipping.',
     benefits: [
       {
         value: 'Less handoff',
@@ -215,7 +215,7 @@ export const landingContent = {
   },
   faq: [
     {
-      question: 'Does ZeroClaw replace engineers?',
+      question: 'Does myClawTeam replace engineers?',
       answer:
         'No. It handles focused implementation workflows while keeping decisions, review, and ownership inside the repository.',
     },
@@ -234,7 +234,7 @@ export const landingContent = {
     eyebrow: 'FAQ',
     heading: 'Common questions before you hand work to an autonomous agent.',
     description:
-      'A short set of answers about ownership, collaboration, and how ZeroClaw fits into an existing GitHub workflow.',
+      'A short set of answers about ownership, collaboration, and how myClawTeam fits into an existing GitHub workflow.',
   },
   footer: {
     description:
@@ -251,12 +251,12 @@ export const landingContent = {
       {
         href: 'https://github.com/mtplayground/mike-t-302f-test-website-003',
         label: 'GitHub',
-        ariaLabel: 'View the ZeroClaw website repository on GitHub',
+        ariaLabel: 'View the myClawTeam website repository on GitHub',
       },
       {
-        href: 'mailto:hello@zeroclaw.dev',
+        href: 'mailto:hello@myclawteam.dev',
         label: 'Email',
-        ariaLabel: 'Email ZeroClaw',
+        ariaLabel: 'Email myClawTeam',
       },
     ],
     legalText: 'All rights reserved.',

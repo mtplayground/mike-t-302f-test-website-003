@@ -3,7 +3,7 @@
 ## What This Project Is
 
 `mike-t-302f-test-website-003` is a Vite, React, TypeScript, and Tailwind CSS
-single-page landing site for ZeroClaw, an autonomous software delivery agent for
+single-page landing site for myClawTeam, an autonomous software delivery agent for
 founder-led products.
 
 ## Current Functionality
