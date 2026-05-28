@@ -19,7 +19,10 @@ export function FinalCTA() {
             <p className="mb-4 text-eyebrow uppercase text-signal">
               {finalCta.eyebrow}
             </p>
-            <h2 id="final-cta-title" className="text-5xl font-black">
+            <h2
+              id="final-cta-title"
+              className="text-4xl font-black sm:text-5xl"
+            >
               {finalCta.heading}
             </h2>
             <p className="mt-6 max-w-3xl text-lede text-paper/70">
@@ -27,11 +30,12 @@ export function FinalCTA() {
             </p>
           </div>
 
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 sm:max-w-xs lg:max-w-none">
             <Button
               href={appConfig.ctaUrl}
               variant="signal"
               size="lg"
+              className="w-full sm:w-auto"
               aria-label={cta.ariaLabel}
             >
               {cta.label}

@@ -20,7 +20,7 @@ export function FAQ() {
             <p className="mb-4 text-eyebrow uppercase text-accent">
               {faqSection.eyebrow}
             </p>
-            <h2 id="faq-title" className="text-4xl font-black">
+            <h2 id="faq-title" className="text-3xl font-black sm:text-4xl">
               {faqSection.heading}
             </h2>
             <p className="mt-5 text-lede text-muted">
@@ -41,7 +41,7 @@ export function FAQ() {
                 >
                   <h3>
                     <button
-                      className="flex w-full items-center justify-between gap-4 rounded-panel px-5 py-5 text-left text-lg font-black text-ink transition-colors hover:bg-ink/5"
+                      className="flex w-full items-center justify-between gap-4 rounded-panel px-4 py-5 text-left text-base font-black text-ink transition-colors hover:bg-ink/5 sm:px-5 sm:text-lg"
                       type="button"
                       id={buttonId}
                       aria-expanded={isOpen}
@@ -66,7 +66,7 @@ export function FAQ() {
                     role="region"
                     aria-labelledby={buttonId}
                     hidden={!isOpen}
-                    className="px-5 pb-5"
+                    className="px-4 pb-5 sm:px-5"
                   >
                     <p className="max-w-2xl text-base leading-7 text-muted">
                       {item.answer}

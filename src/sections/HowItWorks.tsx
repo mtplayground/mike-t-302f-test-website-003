@@ -18,7 +18,10 @@ export function HowItWorks() {
             <p className="mb-4 text-eyebrow uppercase text-accent">
               {howItWorks.eyebrow}
             </p>
-            <h2 id="how-it-works-title" className="text-4xl font-black">
+            <h2
+              id="how-it-works-title"
+              className="text-3xl font-black sm:text-4xl"
+            >
               {howItWorks.heading}
             </h2>
           </div>
@@ -30,7 +33,7 @@ export function HowItWorks() {
         <ol className="mt-12 grid gap-4 lg:grid-cols-4">
           {sdlcSteps.map((step, index) => (
             <li
-              className="relative rounded-panel border border-ink/10 bg-paper p-6 shadow-panel"
+              className="relative rounded-panel border border-ink/10 bg-paper p-5 shadow-panel sm:p-6"
               key={step.label}
             >
               <div className="flex items-center justify-between gap-4">
@@ -41,7 +44,7 @@ export function HowItWorks() {
                   {step.label}
                 </span>
               </div>
-              <h3 className="mt-8 text-2xl font-black text-ink">
+              <h3 className="mt-6 text-2xl font-black text-ink sm:mt-8">
                 {step.label}
               </h3>
               <p className="mt-4 text-base leading-7 text-muted">
