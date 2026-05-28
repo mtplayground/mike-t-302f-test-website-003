@@ -56,6 +56,7 @@
 
   html {
     min-width: 320px;
+    scroll-padding-top: 6rem;
     scroll-behavior: smooth;
     background: var(--color-paper);
   }
@@ -70,5 +71,16 @@
 
   #root {
     min-height: 100vh;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-signal);
+    outline-offset: 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }
